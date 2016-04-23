@@ -1,0 +1,25 @@
+To do for cats 4 cats:
+Get nav bar logout button responsive to whether a user is logged in or not.
+nav bar will likely need it's own controller
+
+landing page on login needs to be wireframed and started ASAP.
+	about me section
+	profile questions
+	
+
+Users need to have pictures (schema design update)
+
+
+all in all application should be 3 pages by friday. Home page is a dashboard where you can edit your info (use kitty_modular to help with this)
+There should be a page much like the products page in mini mean store that will list all the cats "in heat"
+
+pull header links to the right and give a welcome message
+
+ 
+
+idea for profile pic problem:
+
+profile pic can be picture 0 in an array.
+switching your profile pic just makes a different photo index 0 in the array
+
+need to figure out an ng-click for making pictures larger...

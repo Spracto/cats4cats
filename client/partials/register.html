@@ -1,5 +1,6 @@
-<div class="col-md-4">
-  <h1>Register</h1>
+<h1 class='cursive'>Welcome to...Cats 4 cats....</h1>
+<div class="reg_div col-md-4 col-md-offset-4">
+  <h1 class='cursive'>Register...</h1>
   <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
   <form class="form" ng-submit="register()">
     <div class="form-group">
@@ -7,11 +8,32 @@
       <input type="text" class="form-control" name="username" ng-model="registerForm.username" required>
     </div>
     <div class="form-group">
+      <label>Birthdate</label>
+      <input type="date" class="form-control" name="birthdate" ng-model="registerForm.birthdate" required>
+    </div>
+    <div class="form-group">
+      <label>Gender</label><br />
+      <input type="radio" class="reg_gender" name="gender" value='male' ng-model="registerForm.gender" required>Male <br />
+      <input type='radio' class='reg_gender' name='gender' value='female' ng-model=registerForm.gender required />Female
+    </div>
+    <div class="form-group">
+      <label>Location</label>
+      <input type="text" class="form-control" name="location" ng-model="registerForm.location" required>
+    </div>
+    <div class="form-group">
+      <label>Breed</label>
+      <input type="text" class="form-control" name="breed" value='male' ng-model="registerForm.breed" required>
+    </div>
+    <div class="form-group">
       <label>Password</label>
         <input type="password" class="form-control" name="password" ng-model="registerForm.password" required>
       </div>
+      <div class="form-group">
+        <label>Confirm Password</label>
+          <input type="password" class="form-control" name="password" ng-model="registerForm.confirmpassword" required>
+        </div>
       <div>
-        <button type="submit" class="btn btn-default" ng-disabled="disabled">Register</button>
+        <button type="submit" class="btn btn-info cursive_button" ng-disabled="disabled">Register</button><a class='cursive_button pull-right btn btn-primary' href='#/login'>Registered already?</a>
       </div>
   </form>
 </div>

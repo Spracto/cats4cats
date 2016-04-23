@@ -3,10 +3,13 @@ var router = express.Router();
 var passport = require('passport');
 
 var User = require('../models/user.js');
+var user_controller = require('../controllers/users.js')
 
+// router.get('/')
 
 router.post('/register', function(req, res) {
-  User.register(new User({ username: req.body.username }),
+  console.log("backend route", req.body)
+  User.register(new User({ username: req.body.username, gender: req.body.gender, birthdate: req.body.birthdate, location: req.body.location, breed: req.body.breed }),
     req.body.password, function(err, account) {
     if (err) {
       return res.status(500).json({
@@ -46,6 +49,7 @@ router.post('/login', function(req, res, next) {
 
 router.get('/logout', function(req, res) {
   req.logout();
+
   res.status(200).json({
     status: 'Bye!'
   });

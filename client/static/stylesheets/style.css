@@ -1,0 +1,41 @@
+.cursive{
+  font: 400 50px/1.3 'Arizonia', Helvetica, sans-serif!important;
+  color: #2b2b2b;
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+.login_div{
+  border: 2px solid black;
+  border-radius: 10px;
+  padding-bottom: 25px;
+}
+.reg_div{
+  border: 2px solid black;
+  border-radius: 10px;
+  padding-bottom: 25px;
+}
+body{
+  background-color: #ff69b4;
+}
+.reg_gender{
+  padding: 5px;
+}
+header{
+  padding-top: 10px;
+}
+.nav_delimiter{
+  font-size: 24px;
+  padding: 8px;
+}
+.nav_link{
+  font-size: 18px;
+}
+.cursive_link{
+  font: 300 50px/1.3 'Arizonia', Helvetica, sans-serif!important;
+}
+.cursive_button{
+  font: 300 25px/1.3 'Arizonia', Helvetica, sans-serif!important;
+
+}
+.logoutbutton{
+  margin-top: 20px;
+}
