@@ -32,14 +32,27 @@ angular.module('myApp').factory('UserFactory',
     $http.post('/user/setPic', user_data).success(function(response){
       // console.log('userfactory.js:', response)
       callback(users)
-    })
+    });
   }
 
   factory.addPic = function(pic, callback){
     $http.post('/user/addPic', pic).success(function(response){
-      console.log('userfactory.js here, response is:', response)
-      callback(response)
-    })
+      callback(response);
+    });
+  }
+
+  factory.removePic = function(pic, callback){
+    $http.post('/user/removePic', pic).success(function(response){
+      callback(response);
+    });
+  }
+
+  factory.updateAboutMe = function(info, callback){
+    console.log("Am I breaking here?",info)
+    $http.post('/user/updateAboutMe', info).success(function(response){
+      console.log('updateAboutMe', info)
+      callback(response);
+    });
   }
 
   return factory;

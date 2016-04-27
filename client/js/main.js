@@ -44,8 +44,13 @@ myApp.config(function ($routeProvider) {
       access: {restricted: true}
     })
     .when('/two', {
-      template: '<h1>This is page two!</h1>',
+      templateUrl: 'partials/browse.html',
       access: {restricted: false}
+    })
+    .when('/messages',{
+      templateUrl: 'partials/messages.html',
+      controller: 'messageController',
+      access: {restricted: true}
     })
     .otherwise({
       redirectTo: '/'

@@ -4,6 +4,7 @@ angular.module('myApp').controller('showController',
     $scope.id = $routeParams.id;
     $scope.profile_photo_array = [];
     $scope.user_profile = [];
+    $scope.featured_photo = "";
     // $scope.user_info = [];
 
     UserFactory.get_user_by_id($scope.id, function(data){
@@ -11,11 +12,20 @@ angular.module('myApp').controller('showController',
       // data.birthdate = moment(data.birthdate).fromNow(true)
       // console.log(data.birthdate)
       $scope.user_profile = data;
+      console.log("scope user profile is:", $scope.user_profile)
       angular.forEach($scope.user_profile.other_pics, function(pic){
         console.log("stuff and ",pic)
         $scope.profile_photo_array.push(pic)
       })
     });
+
+    $scope.expandPhoto = function(photo) {
+      if($scope.featured_photo == photo){
+        $scope.featured_photo = "";
+      }else{
+        $scope.featured_photo = photo;
+      }
+    }
 
     // var pagesShown = 1;
     //

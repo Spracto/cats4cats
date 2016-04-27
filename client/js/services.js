@@ -27,7 +27,7 @@ angular.module('myApp').factory('AuthService',
       // handle success
       .success(function (data) {
         if(data.status){
-          console.log("the services.js getUserStatus function data variable is:", data)
+          // console.log("the services.js getUserStatus function data variable is:", data)
           $rootScope.user_id = data.user_id
           $rootScope.loggedIn = true;
           user = true;
@@ -112,7 +112,9 @@ angular.module('myApp').factory('AuthService',
         // handle success
         .success(function (data, status) {
           if(status === 200 && data.status){
-            console.log("the console log you want IS RIGHT HERE", data,"STATUS STARTS HERE", status)
+            console.log("the console log you want IS RIGHT HERE", data.account._id);
+            $rootScope.user_id = data.account._id;
+            $rootScope.loggedIn = true;
             // user = true
             deferred.resolve();
           } else {

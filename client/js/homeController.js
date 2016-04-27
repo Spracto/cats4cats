@@ -24,9 +24,9 @@ angular.module('myApp').controller('homeController',
       for(k in data){
         if (data[k]._id == $rootScope.user_id){
           $scope.user_info = data.splice(k, 1);
-          console.log($scope.user_info[0].other_pics)
+          // console.log("scope dot user info of 0 dot other pics",$scope.user_info[0].other_pics)
           angular.forEach($scope.user_info[0].other_pics, function(pic){
-            console.log("littering and...",pic)
+            // console.log("littering and...",pic)
             $scope.user_info_photos.push(pic)
           })
         }
@@ -54,15 +54,32 @@ angular.module('myApp').controller('homeController',
     $scope.addPics = function() {
       user = {
         user_id: $rootScope.user_id,
-        pic: $scope.pictures.pic
+        pic: $scope.pictures.pics
       }
-      console.log('addPic function has user as:', user)
+      // console.log('addPic function has user as:', user)
       UserFactory.addPic(user, function(data){
-        console.log("that dater do:", data)
+        // console.log("that dater do:", data)
+        $scope.user_info_photos.push(user.pic)
         $scope.pictures = {};
       })
     }
 
+    $scope.removePic = function(photo) {
+      UserFactory.removePic(photo, function(){
+        $scope.user_info_photos.splice($scope.user_info_photos.indexOf(photo), 1)
+        console.log('success')
+      })
+    }
+
+    $scope.updateAboutMe = function() {
+      console.log('DEADMAU5!, also this:', $scope.profile.about_me)
+      update = {info: $scope.profile.about_me}
+      // $scope.user_info.about_me = $scope.profile.about_me;
+      UserFactory.updateAboutMe(update, function(){
+        $scope.user_info[0].about_me = $scope.profile.about_me;
+        console.log('if I"m getting here then what is up', $scope.user_info.about_me, $scope.profile.about_me)
+      })
+    }
 
 
     // UserFactory.get_user_by_id(function(data){

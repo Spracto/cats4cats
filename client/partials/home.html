@@ -1,6 +1,11 @@
-  <h1 class='cursive'>Welcome {{user_info[0].username | capitalize}}</h1>
+<div class='home_page_header'>
+  <h1 class='cursive_home_page_header'>Welcome {{user_info[0].username | capitalize}}</h1>
+  <p class='cursive_header pull-right'>See who's in heat...</p>
+</div>
+<div class='home_page_photo_container'>
   <img class='profile_pic' height=250 width=240 src='{{user_info[0].pic_0}}' />
-  <p class='cursive_header'>See who's in heat...</p>
+  <a style="margin-left: 40px;" class='cursive_button btn btn-link' href='#/one/{{user_info[0]._id}}'>View my profile</a>
+</div>
   <div class='pull-right in_heat_div'>
     <div class='heat_div_user' ng-repeat='user in users | limitTo: paginationLimit()'>
       <a href='#/one/{{user._id}}'><img style='border: 2px solid blue' height=150 width=140 src='{{user.pic_0}}' /></a>
@@ -8,28 +13,32 @@
       <p>location: {{user.location}}</p>
     </div>
   </div>
-  <a style='margin-left: 50px' class='cursive_button btn btn-link' href='#/one/{{user_info[0]._id}}'>View my profile</a>
   <div class='form-group profile_pic_form'>
     <div class='inputs'>
-      <label class='form_label'>Set your profile picture!</label>
-      <input class='form-control index_form' type='text' placeholder='{{user_info[0].pic_0}}' ng-model='profile.picture'>
-      <button class='btn btn-info pull-right pic_button' ng-click='uploadPic()'>Confirm</button>
+      <label class='cursive_button form_label'>Set your profile picture!</label>
+      <input class='form-control index_form' type='text' placeholder='URL goes here' ng-model='profile.picture'>
+      <button class='btn btn-info pull-right pic_button cursive_button' ng-click='uploadPic()'>Confirm</button>
       <input class='form-control index_form' type='text' placeholder="" ng-model='pictures.pics' />
-      <label class='form_label'>Add other pictures here</label>
-      <button class='btn btn-info pull-right pic_button' ng-click='addPics()'>Upload other pics</button>
+      <label class='cursive_button form_label'>Add other pictures here</label>
+      <button class='btn btn-info pull-right pic_button cursive_button' ng-click='addPics()'>Upload other pics</button>
     </div>
     <div class='label_div'>
-      <label class='remove_photo_label'>Remove a photo</label>
+      <label class='cursive_button remove_photo_label'>Your Photos</label>
     </div>
     <div class='home_photo_management'>
       <div ng-repeat="user_info_photo in user_info_photos track by $index" class='home_image_div'>
-        <img class='home_image' height=200 width=200 src='{{user_info_photo}}'/>
-        <button class='btn btn-danger' ng-model='user_info_photo'>Delete</button>    
+        <img class='home_image' height=210 width=190 src='{{user_info_photo}}'/>
+        <button class='btn btn-danger cursive_button' ng-click='removePic(user_info_photo)'>Delete</button>
       </div>
     </div>
   <h2 class='cursive'>All About Me</h2>
-  <textarea class='about_me form-control' ng-model='about_me' rows="8" cols="40">Why painful the sixteen how minuter looking nor. Subject but why ten earnest husband imagine sixteen brandon. Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they. Stuff at avoid of sense small fully it whose an. Ten scarcely distance moreover handsome age although. As when have find fine or said no mile. He in dispatched in imprudence dissimilar be possession unreserved insensible. She evil face fine calm have now. Separate screened he outweigh of distance landlord. </textarea>
-  <button class='btn btn-info pull-right pic_button' >Update About Me</button>
-  <h2 class='cursive'>Indoor or outdoor?</h2>
-  <textarea class='about_me form-control' rows="3" cols="35">Delightful unreserved impossible few estimating men favourable see entreaties. She propriety immediate was improving. He or entrance humoured likewise moderate. Much nor game son say feel. Fat make met can must form into gate. Me we offending prevailed discovery</textarea>
+  <textarea class='about_me form-control' ng-model='profile.about_me' rows="8" cols="40"></textarea>
+  <button class='btn btn-info pull-right pic_button' ng-click='updateAboutMe()'>Update About Me</button>
+  <div class='profile_preview'>
+    <p class='cursive'>{{user_info[0].about_me}}</p>
+  </div>
+  <!-- <h2 class='cursive'>Indoor or outdoor?</h2>
+  <textarea class='about_me form-control' ng-model='profile.indoor_outdoor' rows="3" cols="35"></textarea>
+  <button class='btn btn-info pull-right pic_button' ng-click='updateIndoorOutdoor()' >Update Indoor Outdoor</button> -->
+
 </div>

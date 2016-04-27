@@ -11,7 +11,7 @@
 </head>
   <div class="container">
     <header ng-controller='logoutController'>
-      <a class='nav_link cursive_link' href='#/'>Home</a><span class='nav_delimiter'>|</span><a class='nav_link cursive_link' href='#/two'>Browse</a><a ng-show="loggedIn" ng-click='logout();' class="pull-right logoutbutton btn btn-primary">Logout</a><hr />
+      <a class='nav_link cursive_link' href='#/'>Home</a><span class='nav_delimiter'>|</span><a class='nav_link cursive_link' href='#/two'>Browse</a><span class='nav_delimiter'>|</span><a class='nav_link cursive_link' href='#/messages'>Messages</a> <a ng-show="loggedIn" ng-click='logout();' class="cursive_button pull-right logoutbutton btn btn-primary">Logout</a><hr />
     </header>
     <div ng-view></div>
   </div>
@@ -28,6 +28,7 @@
   <script src="js/UserFactory.js"></script>
   <script src='js/loginController.js'></script>
   <script src="js/registerController.js"></script>
+  <script src='js/messageController.js'></script>
   <script src='js/homeController.js'></script>
   <script src='js/showController.js'></script>
 

@@ -9,13 +9,14 @@
   <p class='cursive'></p>
 </div>
 <div class='profile_photo_array'>
+  <p class='photo_array_text'>Click to expand</p>
   <!-- <h1>{{profile_photo}}</h1> -->
-  <img ng-repeat='profile_photo in profile_photo_array track by $index' height=150 width=150 src='{{profile_photo}}' />
+  <img ng-repeat='profile_photo in profile_photo_array track by $index' class='array_photo' ng-click='expandPhoto(profile_photo)' height=200 width=165 src='{{profile_photo}}' />
+</div>
+<div class='featured_photo_div'>
+  <img class='featured_photo' src='{{featured_photo}}' />
 </div>
 <div class='form-group profile_pic_form'>
-<h2 class='cursive'>All About Me</h2>
-<textarea class='about_me form-control' ng-model='about_me' rows="8" cols="40">Why painful the sixteen how minuter looking nor. Subject but why ten earnest husband imagine sixteen brandon. Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they. Stuff at avoid of sense small fully it whose an. Ten scarcely distance moreover handsome age although. As when have find fine or said no mile. He in dispatched in imprudence dissimilar be possession unreserved insensible. She evil face fine calm have now. Separate screened he outweigh of distance landlord. </textarea>
-<button class='btn btn-info pull-right pic_button' >Update About Me</button>
-<h2 class='cursive'>Indoor or outdoor?</h2>
-<textarea class='about_me form-control' rows="3" cols="35">Delightful unreserved impossible few estimating men favourable see entreaties. She propriety immediate was improving. He or entrance humoured likewise moderate. Much nor game son say feel. Fat make met can must form into gate. Me we offending prevailed discovery</textarea>
+<h2 class='cursive'>All About {{user_profile.username | capitalize}}:</h2>
+  <p class='cursive'>{{user_profile.about_me}}</p>
 </div>

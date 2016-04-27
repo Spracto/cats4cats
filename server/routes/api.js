@@ -22,8 +22,19 @@ router.post('/setPic', function(req, res){
 });
 
 router.post('/addPic', function(req, res){
+  console.log('dropping logs like bombs', req.body)
   user_controller.addPic(req, res)
 });
+
+router.post('/updateAboutMe', function(req, res){
+  console.log("am I here God?", req.body)
+  user_controller.updateAboutMe(req, res)
+});
+
+router.post('/removePic', function(req, res){
+  console.log('api.js removepic function', req.body)
+  user_controller.removePic(req, res)
+})
 
 router.post('/register', function(req, res) {
   console.log("so far so good in api.js", req.body)
@@ -34,14 +45,10 @@ router.post('/register', function(req, res) {
       return res.status(500).json({
         err: err
       });
-    } else {
-      var user = user_controller.get_new_user(req, res)
-      console.log('am I getting to the else?:', user)
-    }
+    } req.session.user_id = account._id
     passport.authenticate('local')(req, res, function (err, user) {
-      console.log()
       return res.status(200).json({
-        status: 'Registration successful!', user: user
+        status: 'Registration successful!', account: account
       });
     });
   });
