@@ -12,8 +12,16 @@ angular.module('myApp').controller('loginController',
       AuthService.login($scope.loginForm.username, $scope.loginForm.password)
         // handle success
         .then(function () {
-          
-          $location.path('/');
+
+          //here seems like a good place to grab a user id yeah?
+          //what is AuthService sending back?
+            //it's equating to true or false.
+
+          //should I write a separate function to query the DB for the
+          //ID of the user upon login? ...Seems arduous. better way
+          //is possible.
+          // console.log($rootScope.user_id)
+          $location.path("/");
           $scope.disabled = false;
           $scope.loginForm = {};
         })

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>MEAN Auth</title>
+  <title>Cats for cats...</title>
   <!-- styles -->
   <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
@@ -11,7 +11,7 @@
 </head>
   <div class="container">
     <header ng-controller='logoutController'>
-      <a class='nav_link cursive_link' href='#/'>Home</a><span class='nav_delimiter'>|</span><a class='nav_link cursive_link' href='#/one'>One</a><span class='nav_delimiter'>|</span><a class='nav_link cursive_link' href='#/two'>Two</a><a ng-show="loggedIn" ng-click='logout();' class="pull-right logoutbutton btn btn-primary">Logout</a><hr />
+      <a class='nav_link cursive_link' href='#/'>Home</a><span class='nav_delimiter'>|</span><a class='nav_link cursive_link' href='#/two'>Browse</a><a ng-show="loggedIn" ng-click='logout();' class="pull-right logoutbutton btn btn-primary">Logout</a><hr />
     </header>
     <div ng-view></div>
   </div>
@@ -21,11 +21,15 @@
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.min.js"></script>
+  <script src='js/moment/moment.js'></script>
+  <script src='js/angular-moment/angular-moment.js'></script>
   <script src="js/main.js"></script>
   <script src="js/services.js"></script>
+  <script src="js/UserFactory.js"></script>
   <script src='js/loginController.js'></script>
   <script src="js/registerController.js"></script>
   <script src='js/homeController.js'></script>
+  <script src='js/showController.js'></script>
 
 </body>
 </html>

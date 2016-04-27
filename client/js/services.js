@@ -27,6 +27,8 @@ angular.module('myApp').factory('AuthService',
       // handle success
       .success(function (data) {
         if(data.status){
+          console.log("the services.js getUserStatus function data variable is:", data)
+          $rootScope.user_id = data.user_id
           $rootScope.loggedIn = true;
           user = true;
         } else {
@@ -49,7 +51,12 @@ angular.module('myApp').factory('AuthService',
         {username: username, password: password})
         // handle success
         .success(function (data, status) {
+          // console.log("services data is:", data, "the status is :", status)
+          //i have modified data to respond with the id of the user for
+          //the purpose of trying tracking the user across the site
           if(status === 200 && data.status){
+            // console.log(req.session.user_id)
+            $rootScope.user_id = data.user_id
             $rootScope.loggedIn = true;
             user = true;
             deferred.resolve();
@@ -105,6 +112,7 @@ angular.module('myApp').factory('AuthService',
         // handle success
         .success(function (data, status) {
           if(status === 200 && data.status){
+            console.log("the console log you want IS RIGHT HERE", data,"STATUS STARTS HERE", status)
             // user = true
             deferred.resolve();
           } else {
@@ -120,5 +128,6 @@ angular.module('myApp').factory('AuthService',
       return deferred.promise;
 
     }
+
 
 }]);

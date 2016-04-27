@@ -3,6 +3,25 @@
   color: #2b2b2b;
   text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
 }
+.cursive_header{
+  font: 400 28px/1.3 'Arizonia', Helvetica, sans-serif!important;
+  color: #2b2b2b;
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 65px;
+}
+.cursive_show_page{
+  font: 400 30px/1.3 'Arizonia', Helvetica, sans-serif!important;
+  color: #2b2b2b;
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 65px;
+}
+.container{
+  padding-bottom: 150px;
+}
 .login_div{
   border: 2px solid black;
   border-radius: 10px;
@@ -14,7 +33,7 @@
   padding-bottom: 25px;
 }
 body{
-  background-color: #ff69b4;
+  background-color:	#ff69b4;
 }
 .reg_gender{
   padding: 5px;
@@ -23,7 +42,7 @@ header{
   padding-top: 10px;
 }
 .nav_delimiter{
-  font-size: 24px;
+  font-size: 32px;
   padding: 8px;
 }
 .nav_link{
@@ -38,4 +57,88 @@ header{
 }
 .logoutbutton{
   margin-top: 20px;
+  border-radius: 4px;
+}
+.about_me{
+  resize: none;
+  border-radius: 8px;
+}
+.profile_pic{
+  border-radius: 5px;
+  border: 2px solid black;
+  vertical-align: top;
+}
+.in_heat_div{
+  display: inline-block;
+  width: 55%;
+  height: 250px;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 18px 0px 0px 10px;
+  margin-bottom: 25px;
+}
+.heat_div_user{
+  text-align: center;
+  margin: 5px;
+  /*padding: 5px;*/
+  display: inline-block;
+  vertical-align: top;
+  /*border: 2px solid white;*/
+  height: 150px;
+  width: 140px;
+}
+.pic_button{
+  margin-top: 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.profile_pic_form{
+  margin-top: 45px;
+}
+.form_label{
+  font-size: 18px;
+}
+.index_form{
+  border-radius: 10px;
+  /*margin-bottom: 50px;*/
+}
+.user_info_div{
+  display: inline-block;
+  border-radius: 8px;
+  /*border: 4px solid lightblue;*/
+  /*height: 150px;*/
+  width: 40%;
+  margin-left: 15px;
+}
+.profile_photo_array{
+  width: 100%;
+  height: 240px;
+  border: 5px solid white;
+}
+.home_photo_management{
+  /*display: inline-block;*/
+  width: 75%;
+  margin: auto;
+  text-align: center;
+  /*height: 200px*/
+  border: 2px solid white;
+}
+.remove_photo_label{
+  font-size: 15px;
+  vertical-align: top;
+  text-align: center;
+  /*display: inline-block;*/
+}
+.inputs{
+  margin-bottom: 50px;
+}
+.label_div{
+  text-align: center;
+}
+.home_image{
+  padding: 10px;
+}
+.home_image_div{
+  display: inline-block;
+  width: 200px;
 }

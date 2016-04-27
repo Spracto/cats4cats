@@ -1,12 +1,29 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'angularMoment']);
 
 myApp.config(function ($routeProvider) {
   $routeProvider
-    .when('/', {
+    .when('/',{
       templateUrl: 'partials/home.html',
       controller: 'homeController',
+      // resolve: {
+      //   function(AuthService){
+      //     if(AuthService.isLoggedIn()){
+      //       console.log('you are logged in bud')
+      //     }
+      //     else {
+      //       redirectTo:"/login";
+      //       alert("please log in first")
+      //       access: {restricted: true}
+      //     }
+      //   }
+      // }
       access: {restricted: true}
     })
+    // .when('/user/:id', {
+    //   templateUrl: 'partials/show.html',
+    //   controller: 'showController',
+    //   access: {restricted: true}
+    // })
     .when('/login', {
       templateUrl: 'partials/login.html',
       controller: 'loginController',
@@ -21,8 +38,9 @@ myApp.config(function ($routeProvider) {
       controller: 'registerController',
       access: {restricted: false}
     })
-    .when('/one', {
-      template: '<h1>This is page one!</h1>',
+    .when('/one/:id', {
+      templateUrl: 'partials/show.html',
+      controller: 'showController',
       access: {restricted: true}
     })
     .when('/two', {
@@ -46,3 +64,9 @@ myApp.run(function ($rootScope, $location, $route, AuthService) {
       });
   });
 });
+
+myApp.filter('capitalize', function(){
+  return function(input){
+    return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : "";
+  }
+})
