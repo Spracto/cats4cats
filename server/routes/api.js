@@ -41,6 +41,11 @@ router.post('/sendMessage', function(req, res){
   user_controller.sendMessage(req, res)
 });
 
+router.post('/deleteMessage', function(req, res){
+  // console.log("deleteMessage message function in api.js", req.body)
+  user_controller.deleteMessage(req, res)
+});
+
 router.post('/register', function(req, res) {
   console.log("so far so good in api.js", req.body)
   User.register(new User({ username: req.body.username, gender: req.body.gender, birthdate: req.body.birthdate, location: req.body.location, breed: req.body.breed }),

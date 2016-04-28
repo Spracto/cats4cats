@@ -36,6 +36,7 @@ angular.module('myApp').controller('showController',
       UserFactory.sendMessage(data, function(){
         $scope.message = "";
         // console.log('message sent')
+        alert('Message sent');
       })
     }
     // var pagesShown = 1;

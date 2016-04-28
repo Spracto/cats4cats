@@ -1,9 +1,11 @@
 <h1 class='cursive'>Look at all these hot P*ssies....</h1>
 <label class='cursive_button'>Filter:</label>
-<input class='cursive_button' type='radio' name='gender' value='male' ng-model='browse.gender' />Male
-<input class='cursive_button' type='radio' name='gender' value='Female' ng-model='browse.gender' />Female
+<input type='radio' ng-model='gender' />Show All
+<input  type='radio' name='gender' value='male'  ng-model='gender' />Male
+<input  type='radio' name='gender' value='female'  ng-model='gender' />Female
 <div class='browse_container'>
-  <div class='user_container' ng-repeat='user in users'>
-    <img ng-click="viewProfile(user)" src='{{user.pic_0}}' height='180' width='160'/>
+  <div class='user_container' ng-repeat='user in users | filter: {gender: gender} : true' >
+    <img style='border-radius: 5px;' ng-click="viewProfile(user)" src='{{user.pic_0}}' height='180' width='160'/>
+    <p>{{user.username | capitalize}}</p><p>{{user.gender}}</p>
   </div>
 </div>

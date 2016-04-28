@@ -13,7 +13,7 @@ module.exports = {
     })
   },
   setPic: function(req, res){
-    console.log("this is users.js req.body: ",req.body)
+    console.log("setPic in users.js  ",req.body)
     user.update({_id: req.body.user_id}, {pic_0: req.body.pic}, function(err, user){
       if(err){
         console.log("errors setting pic:", err)
@@ -23,7 +23,7 @@ module.exports = {
     })
   },
   addPic: function(req, res){
-    console.log('USers.js here, your req.body is:', req.body)
+    console.log('users.js add Pic:', req.body)
     user.findByIdAndUpdate(req.body.user_id, {$push: {"other_pics": req.body.pic}},
     {safe: true, upsert: true, new: true},
     function(err, model){
@@ -47,8 +47,8 @@ module.exports = {
     })
   },
   removePic: function(req, res){
-    console.log('removePic function', req.session.user_id, req.body.photo_index)
-    user.findByIdAndUpdate(req.session.user_id, {$pull: {"other_pics": req.body.photo_index}}, {multi: false},
+    console.log('removePic function', req.session.user_id, req.body.photo)
+    user.findByIdAndUpdate(req.session.user_id, {$pull: {"other_pics": req.body.photo}}, {multi: false},
       function(err, model){
         if(err){
           console.log("errors:", err)
@@ -81,6 +81,19 @@ module.exports = {
         res.json({status: "success"})
       }
     });
+  },
+
+  deleteMessage: function(req, res){
+    console.log('deleteMessage in user controller', req.body._id)
+    user.findByIdAndUpdate(req.session.user_id, {$pull: {messages: {_id: req.body._id}}, multi: false},
+      function(err, model){
+        if(err){
+          console.log("errors:", err)
+        } else {
+          console.log("removed message", model)
+          res.json({status: "success"})
+        }
+      })
   }
   // get_new_user: function(req, res){
   //   console.log('user.js controller in da house', req.body)

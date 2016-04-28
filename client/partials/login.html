@@ -16,3 +16,11 @@
       </div>
   </form>
 </div>
+<div ng-controller='homeController' class='in_heat_div_login_page'>
+  <h1 class='cursive_button'>Check out some of our hot new users!</h1>
+  <div class='heat_div_user' ng-repeat='user in users | limitTo: paginationLimit()'>
+    <img style='border: 2px solid blue' height=150 width=140 src='{{user.pic_0}}' ng-click='viewProfile(user)'/>
+    <p>{{user.username}}</p>
+    <p>location: {{user.location}}</p>
+  </div>
+</div>

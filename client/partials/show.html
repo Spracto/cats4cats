@@ -23,7 +23,7 @@
   <p class='cursive'>{{user_profile.about_me}}</p>
 </div>
 <div class='form-group'>
-  <label>Send {{user_profile.username}} a message</label>
+  <label class='message_label'>Send {{user_profile.username}} a message</label>
   <form ng-submit='sendMessage(message, user_profile._id)'>
     <textarea rows='6' class='form-control messsage_textarea' ng-model='message'></textarea>
     <input type='submit' class='btn btn-info pull-right cursive_button pic_button'></input>

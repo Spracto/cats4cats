@@ -31,8 +31,28 @@ angular.module('myApp').controller('homeController',
           })
         }
       }
-      $scope.users = data;
+      $scope.users = shuffleArray(data);
     });
+
+    // -> Fisher–Yates shuffle algorithm
+    var shuffleArray = function(array) {
+      var m = array.length, t, i;
+
+      // While there remain elements to shuffle
+      while (m) {
+        // Pick a remaining element…
+        i = Math.floor(Math.random() * m--);
+
+        // And swap it with the current element.
+        t = array[m];
+        array[m] = array[i];
+        array[i] = t;
+      }
+
+      return array;
+    }
+
+
 
     // angular.forEach($scope.user_info.other_pics, function(pic){
     //   console.log("stuff and ",pic)
@@ -65,7 +85,9 @@ angular.module('myApp').controller('homeController',
     }
 
     $scope.removePic = function(photo) {
-      UserFactory.removePic(photo, function(){
+      console.log("step 1", photo)
+      UserFactory.removePic({photo}, function(){
+        console.log("step 3", photo)
         $scope.user_info_photos.splice($scope.user_info_photos.indexOf(photo), 1)
         // console.log('success')
       })
@@ -78,6 +100,7 @@ angular.module('myApp').controller('homeController',
       UserFactory.updateAboutMe(update, function(){
         $scope.user_info[0].about_me = $scope.profile.about_me;
         // console.log('if I"m getting here then what is up', $scope.user_info.about_me, $scope.profile.about_me)
+        $scope.profile = {}
       })
     }
 
@@ -89,6 +112,7 @@ angular.module('myApp').controller('homeController',
         alert('Please login or register to view profiles');
       }
     }
+
 
 
     // UserFactory.get_user_by_id(function(data){

@@ -18,6 +18,12 @@ angular.module('myApp').factory('UserFactory',
     // });
   }
 
+  factory.deleteMessage = function(_id, callback){
+    $http.post('/user/deleteMessage', {_id}).success(function(output){
+      callback(output)
+    })
+  }
+
   factory.get_user_by_id = function(data, callback){
     console.log("made it to the userfactory.js data is:", data )
     $http.get('/user/get_user_by_id/'+ data ).success(function(output){
@@ -42,7 +48,9 @@ angular.module('myApp').factory('UserFactory',
   }
 
   factory.removePic = function(pic, callback){
+    console.log('step 2', pic)
     $http.post('/user/removePic', pic).success(function(response){
+      console.log('step 4', response)
       callback(response);
     });
   }

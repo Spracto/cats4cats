@@ -10,8 +10,8 @@
   <link href='static/stylesheets/style.css' rel='stylesheet' />
 </head>
   <div class="container">
-    <header ng-controller='logoutController'>
-      <a class='nav_link cursive_link' href='#/'>Home</a><span class='nav_delimiter'>|</span><a class='nav_link cursive_link' href='#/two'>Browse</a><span class='nav_delimiter'>|</span><a class='nav_link cursive_link' href='#/messages'>Messages</a> <a ng-show="loggedIn" ng-click='logout();' class="cursive_button pull-right logoutbutton btn btn-primary">Logout</a><hr />
+    <header ng-show="loggedIn" ng-controller='logoutController'>
+      <h1 style='display: inline-block' class='cursive'></h1><a class='nav_link cursive_link' href='#/'>Home</a><span class='nav_delimiter'>|</span><a class='nav_link cursive_link' href='#/two'>Browse</a><span class='nav_delimiter'>|</span><a class='nav_link cursive_link' href='#/messages'>Messages</a> <a ng-show="loggedIn" ng-click='logout();' class="cursive_button pull-right logoutbutton btn btn-primary">Logout</a><hr />
     </header>
     <div ng-view></div>
   </div>

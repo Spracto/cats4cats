@@ -1,2 +1,12 @@
 <h1 class='cursive'>Inbox:</h1>
-  
+  <div class='messages'>
+    <div ng-repeat="message in user_messages" class='message_container'>
+      <!-- <h1>{{message.img}}</h1> -->
+      <p>From: {{message.inbox.from | capitalize}}</p>
+      <a href=""><img style='display: inline-block; border: 2px solid black' height=150 width=150 src='{{message.inbox.img}}' /></a>
+      <p style='display: inline-block' class=''>{{message.inbox.message}}</p>
+      <button ng-click='deleteMessage(message.inbox._id)' style='margin-top: 120px; margin-left: 75px;' class='btn btn-danger pull-right'>Delete Message</button>
+      <button style='margin-top: 120px' class='btn btn-info pull-right'>Reply</button>
+      <hr />
+    </div>
+  </div>
