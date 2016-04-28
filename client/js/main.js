@@ -45,6 +45,7 @@ myApp.config(function ($routeProvider) {
     })
     .when('/two', {
       templateUrl: 'partials/browse.html',
+      controller: 'homeController',
       access: {restricted: false}
     })
     .when('/messages',{

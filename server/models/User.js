@@ -16,7 +16,11 @@ var User = new Schema({
   about_me: String,
   indoor_outdoor: String,
   pic_0: String,
-  other_pics: [{type: String}]
+  other_pics: [{type: String}],
+  messages: [{
+    message: String,
+    from: String
+  }]
 });
 
 User.plugin(passportLocalMongoose);

@@ -27,6 +27,17 @@ angular.module('myApp').controller('showController',
       }
     }
 
+    $scope.sendMessage = function(message, user_id){
+      console.log("littering and",message, user_id)
+      var data = {
+        message: message,
+        user_id: user_id
+      }
+      UserFactory.sendMessage(data, function(){
+        $scope.message = "";
+        // console.log('message sent')
+      })
+    }
     // var pagesShown = 1;
     //
     // var pageSize = 4;

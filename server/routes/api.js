@@ -34,7 +34,12 @@ router.post('/updateAboutMe', function(req, res){
 router.post('/removePic', function(req, res){
   console.log('api.js removepic function', req.body)
   user_controller.removePic(req, res)
-})
+});
+
+router.post('/sendMessage', function(req, res){
+  console.log('sendMessage function in api.js', req.body)
+  user_controller.sendMessage(req, res)
+});
 
 router.post('/register', function(req, res) {
   console.log("so far so good in api.js", req.body)

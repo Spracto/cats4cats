@@ -1,6 +1,6 @@
 angular.module('myApp').controller('homeController',
-  ['$scope', '$location', 'AuthService', 'UserFactory', '$rootScope',
-  function($scope, $location, AuthService, UserFactory, $rootScope){
+  ['$scope', '$location', 'AuthService', 'UserFactory', '$rootScope', '$location',
+  function($scope, $location, AuthService, UserFactory, $rootScope, $location){
     $scope.users = [];
     $scope.user_info = [];
     $scope.user_info_photos = [];
@@ -67,18 +67,27 @@ angular.module('myApp').controller('homeController',
     $scope.removePic = function(photo) {
       UserFactory.removePic(photo, function(){
         $scope.user_info_photos.splice($scope.user_info_photos.indexOf(photo), 1)
-        console.log('success')
+        // console.log('success')
       })
     }
 
     $scope.updateAboutMe = function() {
-      console.log('DEADMAU5!, also this:', $scope.profile.about_me)
+      // console.log('DEADMAU5!, also this:', $scope.profile.about_me)
       update = {info: $scope.profile.about_me}
       // $scope.user_info.about_me = $scope.profile.about_me;
       UserFactory.updateAboutMe(update, function(){
         $scope.user_info[0].about_me = $scope.profile.about_me;
-        console.log('if I"m getting here then what is up', $scope.user_info.about_me, $scope.profile.about_me)
+        // console.log('if I"m getting here then what is up', $scope.user_info.about_me, $scope.profile.about_me)
       })
+    }
+
+    $scope.viewProfile = function(user) {
+      console.log($rootScope.loggedIn, user._id);
+      if($rootScope.loggedIn == true){
+        $location.path('/one/'+user._id)
+      } else {
+        alert('Please login or register to view profiles');
+      }
     }
 
 

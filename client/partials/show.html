@@ -1,6 +1,8 @@
-<h1 class='cursive'>{{user_profile.username | capitalize}}'s Profile</h1>
+<div class='show_page_header'>
+  <h1 class='cursive show_page_h1'>{{user_profile.username | capitalize}}'s Profile</h1>
+  <p class='cursive_show_page'>All about {{user_profile.username | capitalize}}...</p>
+</div>
 <img class='profile_pic' height=250 width=240 src='{{user_profile.pic_0}}' />
-<p class='cursive_show_page'>All about {{user_profile.username | capitalize}}...</p>
 <div class='user_info_div'>
   <p class='cursive'>Age: <span am-time-ago='user_profile.birthdate'></span></p>
   <p class='cursive'>Gender: {{user_profile.gender}}</p>
@@ -19,4 +21,11 @@
 <div class='form-group profile_pic_form'>
 <h2 class='cursive'>All About {{user_profile.username | capitalize}}:</h2>
   <p class='cursive'>{{user_profile.about_me}}</p>
+</div>
+<div class='form-group'>
+  <label>Send {{user_profile.username}} a message</label>
+  <form ng-submit='sendMessage(message, user_profile._id)'>
+    <textarea rows='6' class='form-control messsage_textarea' ng-model='message'></textarea>
+    <input type='submit' class='btn btn-info pull-right cursive_button pic_button'></input>
+  </form>
 </div>

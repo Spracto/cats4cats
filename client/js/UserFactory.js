@@ -55,5 +55,13 @@ angular.module('myApp').factory('UserFactory',
     });
   }
 
+  factory.sendMessage = function(data, callback){
+    console.log('Get wrecked project', data)
+    $http.post('/user/sendMessage', data).success(function(response){
+      console.log('sendMessage', response)
+      callback(response)
+    });
+  }
+
   return factory;
 });

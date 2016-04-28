@@ -69,6 +69,18 @@ module.exports = {
           res.json({status: "success"})
         }
       })
+  },
+  sendMessage: function(req, res){
+    console.log('sendMessage in user controller', req.body,"the user id is:", req.session.user_id)
+    user.findByIdAndUpdate(req.body.user_id, {$push: {messages: {message: req.body.message, from: req.session.user_id}}},
+    function(err, model){
+      if(err){
+        console.log("errors:", err)
+      } else {
+        console.log('message updated without errors', model)
+        res.json({status: "success"})
+      }
+    });
   }
   // get_new_user: function(req, res){
   //   console.log('user.js controller in da house', req.body)
