@@ -1,6 +1,6 @@
 <h1 class='cursive'>Inbox:</h1>
   <div class='messages'>
-    <div ng-repeat="message in user_messages track by $index" class='message_container'>
+    <div ng-repeat="message in user_messages | reverse" class='message_container'>
       <!-- <h1>{{message.img}}</h1> -->
       <p>From: {{message.inbox.from | capitalize}}</p>
       <a href='#/one/{{message.inbox.from_id}}'><img style='display: inline-block; border: 2px solid black' height=150 width=150 src='{{message.inbox.img}}' /></a>
