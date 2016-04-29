@@ -2,7 +2,7 @@
   <h1 class='cursive show_page_h1'>{{user_profile.username | capitalize}}'s Profile</h1>
   <p class='cursive_show_page'>All about {{user_profile.username | capitalize}}...</p>
 </div>
-<img class='profile_pic' height=250 width=240 src='{{user_profile.pic_0}}' />
+<img ng-click='expandPhoto(user_profile.pic_0)' class='profile_pic' height=250 width=240 src='{{user_profile.pic_0}}' />
 <div class='user_info_div'>
   <p class='cursive'>Age: <span am-time-ago='user_profile.birthdate'></span></p>
   <p class='cursive'>Gender: {{user_profile.gender}}</p>

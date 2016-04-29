@@ -90,7 +90,7 @@ header{
 .in_heat_div{
   display: inline-block;
   width: 55%;
-  height: 250px;
+  height: 270px;
   border: 2px solid white;
   border-radius: 5px;
   padding: 18px 0px 0px 10px;
@@ -100,7 +100,7 @@ header{
   text-align: center;
   display: inline-block;
   width: 55%;
-  height: 320px;
+  height: 340px;
   border: 2px solid white;
   border-radius: 5px;
   padding: 18px 0px 0px 10px;
@@ -226,4 +226,13 @@ textarea{
   color: #2b2b2b;
   text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
   margin-top: 65px;
+}
+.reply_message_form{
+  border-radius: 10px;
+  margin-bottom: 50px;
+  margin-top: 15px;
+  padding: 5px;
+}
+.message_send_message_button{
+  margin-top: 10px;
 }

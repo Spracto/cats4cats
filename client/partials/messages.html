@@ -1,12 +1,18 @@
 <h1 class='cursive'>Inbox:</h1>
   <div class='messages'>
-    <div ng-repeat="message in user_messages" class='message_container'>
+    <div ng-repeat="message in user_messages track by $index" class='message_container'>
       <!-- <h1>{{message.img}}</h1> -->
       <p>From: {{message.inbox.from | capitalize}}</p>
-      <a href=""><img style='display: inline-block; border: 2px solid black' height=150 width=150 src='{{message.inbox.img}}' /></a>
+      <a href='#/one/{{message.inbox.from_id}}'><img style='display: inline-block; border: 2px solid black' height=150 width=150 src='{{message.inbox.img}}' /></a>
       <p style='display: inline-block' class=''>{{message.inbox.message}}</p>
-      <button ng-click='deleteMessage(message.inbox._id)' style='margin-top: 120px; margin-left: 75px;' class='btn btn-danger pull-right'>Delete Message</button>
-      <button style='margin-top: 120px' class='btn btn-info pull-right'>Reply</button>
+      <button ng-click='deleteMessage($index, message, message.inbox._id)' style='margin-top: 120px; margin-left: 75px;' class='btn btn-danger pull-right'>Delete Message</button>
+      <button ng-click='replyToMessage(message.inbox)' style='margin-top: 120px' class='btn btn-info pull-right'>Reply</button>
+      <div ng-show='message.inbox.reply'>
+        <form class='form-group reply_message_form'>
+          <input class='form-control' type='text' name='replyinfo[reply.content]' ng-model='replyinfo.message'/>
+          <button class='btn btn-success pull-right message_send_message_button' type='submit' ng-click='sendMessage(replyinfo, message.inbox.from_id)'>Send message</button>
+        </form>
+      </div>
       <hr />
     </div>
   </div>

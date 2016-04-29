@@ -76,3 +76,9 @@ myApp.filter('capitalize', function(){
     return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : "";
   }
 })
+
+myApp.filter('reverse', function(){
+  return function(items){
+    return items.slice().reverse();
+  };
+});

@@ -19,6 +19,8 @@ angular.module('myApp').controller('homeController',
     pagesShown = pagesShown +1;
     };
 
+    
+
     UserFactory.get_users(function(data){
       // console.log("traverse this:",data)
       for(k in data){

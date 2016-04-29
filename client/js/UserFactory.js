@@ -4,6 +4,7 @@ angular.module('myApp').factory('UserFactory',
   var users = [];
   var user = [];
 
+
   factory.get_users = function(callback){
     $http.get('/user/get_users').success(function(output){
       // console.log('this is a wild thing to try.', req.session.user_id)

@@ -5,7 +5,7 @@ angular.module('myApp').controller('messageController',
     $scope.user_info = [];
     $scope.user_info_photos = [];
     $scope.user_messages = [];
-
+    $scope.replyinfo = {};
     var pagesShown = 1;
 
     var pageSize = 4;
@@ -20,11 +20,20 @@ angular.module('myApp').controller('messageController',
     pagesShown = pagesShown +1;
     };
 
-    $scope.deleteMessage = function(message){
-      UserFactory.deleteMessage(message, function(){
+    $scope.replyToMessage = function(message){
+      if(message.reply == true){
+        message.reply = false;
+      } else {
+        message.reply = true;
+      }
+    }
+
+    $scope.deleteMessage = function(index, message , message_id){
+      console.log(index, message)
+      UserFactory.deleteMessage(message_id, function(){
         $scope.user_messages.splice($scope.user_messages.indexOf(message), 1)
       })
-      console.log(message)
+      // console.log(message)
     }
 
     UserFactory.get_users(function(data){
@@ -40,7 +49,7 @@ angular.module('myApp').controller('messageController',
           // console.log($scope.user_info[0].messages[i])
           if($scope.user_info[0].messages[i].from == data[j]._id){
             // console.log("does this:", $scope.user_info[0].messages[i].from, "equal this?", data[k]._id)
-            $scope.user_messages.push({inbox: {_id: $scope.user_info[0].messages[i]._id, img: data[j].pic_0, from: data[j].username, message: $scope.user_info[0].messages[i].message}});
+            $scope.user_messages.push({inbox: {_id: $scope.user_info[0].messages[i]._id, from_id: data[j]._id ,img: data[j].pic_0, from: data[j].username, message: $scope.user_info[0].messages[i].message}});
             // $scope.user_messages.push()
             // $scope.user_messages.push($scope.user_info[0].messages[i])
 
@@ -111,12 +120,13 @@ angular.module('myApp').controller('messageController',
     $scope.sendMessage = function(message, user_id){
       console.log("littering and",message, user_id)
       var data = {
-        message: message,
+        message: $scope.replyinfo.message,
         user_id: user_id
       }
+      console.log("hello jimmy", $scope.replyinfo)
+      $scope.replyinfo = {};
       UserFactory.sendMessage(data, function(){
-        $scope.message = "";
-        // console.log('message sent')
+        alert('message sent')
       })
     }
 
