@@ -2,28 +2,14 @@ var myApp = angular.module('myApp', ['ngRoute', 'angularMoment']);
 
 myApp.config(function ($routeProvider) {
   $routeProvider
+  //access is a variable that will get set by passport upon login/registration
     .when('/',{
       templateUrl: 'partials/home.html',
       controller: 'homeController',
-      // resolve: {
-      //   function(AuthService){
-      //     if(AuthService.isLoggedIn()){
-      //       console.log('you are logged in bud')
-      //     }
-      //     else {
-      //       redirectTo:"/login";
-      //       alert("please log in first")
-      //       access: {restricted: true}
-      //     }
-      //   }
-      // }
       access: {restricted: true}
     })
-    // .when('/user/:id', {
-    //   templateUrl: 'partials/show.html',
-    //   controller: 'showController',
-    //   access: {restricted: true}
-    // })
+    //currently the only thing that informs the user that they have to log in is a javascript alert,
+    //perhaps this could be a modal in the future?
     .when('/login', {
       templateUrl: 'partials/login.html',
       controller: 'loginController',
@@ -58,6 +44,8 @@ myApp.config(function ($routeProvider) {
     });
 });
 
+// Part of this myApp.run is the fallback for tracking our loggedIn user
+// should the page get reloaded.
 myApp.run(function ($rootScope, $location, $route, AuthService) {
   $rootScope.$on('$routeChangeStart',
     function (event, next, current) {
@@ -70,7 +58,7 @@ myApp.run(function ($rootScope, $location, $route, AuthService) {
       });
   });
 });
-
+//these two functions were added in to help keep things looking clean. 
 myApp.filter('capitalize', function(){
   return function(input){
     return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : "";

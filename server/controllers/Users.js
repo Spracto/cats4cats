@@ -6,14 +6,14 @@ module.exports = {
   index: function(req, res){
     user.find({}, function(err, users){
       if(err){
-        console.log('errors', err)
+        console.error('errors', err)
       } else {
         res.json(users)
       }
     })
   },
   setPic: function(req, res){
-    console.log("setPic in users.js  ",req.body)
+    console.log("setPic in users.js", req.body)
     user.update({_id: req.body.user_id}, {pic_0: req.body.pic}, function(err, user){
       if(err){
         console.log("errors setting pic:", err)
@@ -35,7 +35,7 @@ module.exports = {
     })
     // user.findByIdAndUpdate()
   },
-  get_user_by_id: function(req, res){
+  getUserById: function(req, res){
     console.log("user.js controller here:", req.params)
     user.findOne({_id: req.params.id}, function(err, user){
       if(err){

@@ -3,59 +3,66 @@ var router = express.Router();
 var passport = require('passport');
 
 var User = require('../models/User.js');
-var user_controller = require('../controllers/Users.js')
+var userController = require('../controllers/Users.js')
 
 
 
-router.get('/get_users', function(req, res){
+router.get('/getUsers', function(req, res){
   // console.log('this is the api.js file');
-  user_controller.index(req, res)
+  userController.index(req, res)
 });
 
-router.get('/get_user_by_id/:id', function(req, res){
+router.get('/getUserById/:id', function(req, res){
   console.log('req.body is:', req.params.id)
-  user_controller.get_user_by_id(req, res)
+  userController.getUserById(req, res)
 });
 
 router.post('/setPic', function(req, res){
-  user_controller.setPic(req, res)
+  userController.setPic(req, res)
 });
 
 router.post('/addPic', function(req, res){
   console.log('dropping logs like bombs', req.body)
-  user_controller.addPic(req, res)
+  userController.addPic(req, res)
 });
 
 router.post('/updateAboutMe', function(req, res){
-  console.log("am I here God?", req.body)
-  user_controller.updateAboutMe(req, res)
+  console.log("am I here?", req.body)
+  userController.updateAboutMe(req, res)
 });
 
 router.post('/removePic', function(req, res){
   console.log('api.js removepic function', req.body)
-  user_controller.removePic(req, res)
+  userController.removePic(req, res)
 });
 
 router.post('/sendMessage', function(req, res){
   console.log('sendMessage function in api.js', req.body)
-  user_controller.sendMessage(req, res)
+  userController.sendMessage(req, res)
 });
 
 router.post('/deleteMessage', function(req, res){
   // console.log("deleteMessage message function in api.js", req.body)
-  user_controller.deleteMessage(req, res)
+  userController.deleteMessage(req, res)
 });
 
 router.post('/register', function(req, res) {
   console.log("so far so good in api.js", req.body)
-  User.register(new User({ username: req.body.username, gender: req.body.gender, birthdate: req.body.birthdate, location: req.body.location, breed: req.body.breed }),
+  User.register(new User({
+    username: req.body.username,
+    gender: req.body.gender,
+    birthdate: req.body.birthdate,
+    location: req.body.location,
+    breed: req.body.breed
+  }),
     req.body.password, function(err, account) {
     if (err) {
       console.log(err);
       return res.status(500).json({
         err: err
       });
-    } req.session.user_id = account._id
+    }
+    req.session.user_id = account._id
     passport.authenticate('local')(req, res, function (err, user) {
       return res.status(200).json({
         status: 'Registration successful!', account: account

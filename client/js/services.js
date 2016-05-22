@@ -53,7 +53,7 @@ angular.module('myApp').factory('AuthService',
         .success(function (data, status) {
           // console.log("services data is:", data, "the status is :", status)
           //i have modified data to respond with the id of the user for
-          //the purpose of trying tracking the user across the site
+          //the purpose of tracking the user across the site
           if(status === 200 && data.status){
             // console.log(req.session.user_id)
             $rootScope.user_id = data.user_id

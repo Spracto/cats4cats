@@ -1,5 +1,9 @@
-angular.module('myApp').controller('messageController',
-  ['$scope', '$location', 'AuthService', 'UserFactory', '$rootScope', '$location',
+angular.module('myApp')
+.controller('messageController', [
+  '$scope',
+  '$location',
+  'AuthService',
+  'UserFactory', '$rootScope', '$location',
   function($scope, $location, AuthService, UserFactory, $rootScope, $location){
     $scope.users = [];
     $scope.user_info = [];
@@ -21,11 +25,14 @@ angular.module('myApp').controller('messageController',
     };
 
     $scope.replyToMessage = function(message){
-      if(message.reply == true){
-        message.reply = false;
-      } else {
-        message.reply = true;
-      }
+      // below is one way to do this:
+      // if(message.reply == true){
+      //   message.reply = false;
+      // } else {
+      //   message.reply = true;
+      // }
+      // but below here is a better way to do that
+      message.reply = !message.reply;
     }
 
     $scope.deleteMessage = function(index, message , message_id){
@@ -36,7 +43,7 @@ angular.module('myApp').controller('messageController',
       // console.log(message)
     }
 
-    UserFactory.get_users(function(data){
+    UserFactory.getUsers(function(data){
       // console.log("traverse this:",data)
       for(var k=0; k<data.length; k++){
         if (data[k]._id == $rootScope.user_id){
@@ -52,19 +59,12 @@ angular.module('myApp').controller('messageController',
             $scope.user_messages.push({inbox: {_id: $scope.user_info[0].messages[i]._id, from_id: data[j]._id ,img: data[j].pic_0, from: data[j].username, message: $scope.user_info[0].messages[i].message}});
             // $scope.user_messages.push()
             // $scope.user_messages.push($scope.user_info[0].messages[i])
-
           }
         }
       }
-
       // console.log($scope.user_messages)
       $scope.users = data;
     });
-
-    // angular.forEach($scope.user_info.other_pics, function(pic){
-    //   console.log("stuff and ",pic)
-    //   $scope.user_info_photos.push(pic)
-    // })
 
     $scope.uploadPic = function() {
       user = {
@@ -117,30 +117,33 @@ angular.module('myApp').controller('messageController',
       }
     }
 
-    $scope.sendMessage = function(message, user_id){
-      console.log("littering and",message, user_id)
+    $scope.sendMessage = function(message, user_id, form){
+      // console.log("littering and",message, user_id)
+      // form.reply = false just removes the input form once the user has clicked send
+      form.reply = false;
       var data = {
         message: $scope.replyinfo.message,
         user_id: user_id
       }
-      console.log("hello jimmy", $scope.replyinfo)
       $scope.replyinfo = {};
       UserFactory.sendMessage(data, function(){
-        alert('message sent')
+        alert('message sent');
       })
     }
-
-
-
-    // UserFactory.get_user_by_id(function(data){
-    //   $scope.user_info = data;
-    // });
-
-
-
-    // UserFactory.index(function(data){
-    //   $scope.users = data;
-    // });
-
-
 }])
+
+// Some or none of this may come in handy later
+// UserFactory.getUserById(function(data){
+//   $scope.user_info = data;
+// });
+
+
+
+// UserFactory.index(function(data){
+//   $scope.users = data;
+// });
+
+// angular.forEach($scope.user_info.other_pics, function(pic){
+//   console.log("stuff and ",pic)
+//   $scope.user_info_photos.push(pic)
+// })

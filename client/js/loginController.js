@@ -20,7 +20,6 @@ angular.module('myApp').controller('loginController',
           //should I write a separate function to query the DB for the
           //ID of the user upon login? ...Seems arduous. better way
           //is possible.
-          // console.log($rootScope.user_id)
           $location.path("/");
           $scope.disabled = false;
           $scope.loginForm = {};
@@ -32,9 +31,7 @@ angular.module('myApp').controller('loginController',
           $scope.disabled = false;
           $scope.loginForm = {};
         });
-
     };
-
 }]);
 
 angular.module('myApp').controller('logoutController',
@@ -42,13 +39,10 @@ angular.module('myApp').controller('logoutController',
   function ($scope, $location, AuthService, $rootScope) {
 
     $scope.logout = function () {
-
       // call logout from service
       AuthService.logout()
         .then(function () {
           $location.path('/login');
         });
-
     };
-
 }]);

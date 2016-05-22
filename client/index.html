@@ -5,9 +5,11 @@
   <meta charset="utf-8">
   <title>Cats for cats...</title>
   <!-- styles -->
-  <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css" rel="stylesheet">
+  <link href="static/stylesheets/bootstrap.min.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
   <link href='static/stylesheets/style.css' rel='stylesheet' />
+  <!-- Still to do for this project is modularizing the stylesheets because
+      all of it sits in one file currently which is not ideal -->
   <!-- <link href='static/stylesheets/style.css' rel='stylesheet' />
   <link href='static/stylesheets/style.css' rel='stylesheet' /> -->
 
@@ -16,13 +18,13 @@
     <header ng-show="loggedIn" ng-controller='logoutController'>
       <h1 style='display: inline-block' class='cursive'></h1><a class='nav_link cursive_link' href='#/'>Home</a><span class='nav_delimiter'>|</span><a class='nav_link cursive_link' href='#/two'>Browse</a><span class='nav_delimiter'>|</span><a class='nav_link cursive_link' href='#/messages'>Messages</a> <a ng-show="loggedIn" ng-click='logout();' class="cursive_button pull-right logoutbutton btn btn-primary">Logout</a><hr />
     </header>
-    <div ng-view></div>
+    <div ng-view=''></div>
   </div>
 
   <!-- scripts -->
   <script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+  <script src="js/bootstrapjs/bootstrap.min.js"></script>
+  <script src="js/angular/angular.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.min.js"></script>
   <script src='js/moment/moment.js'></script>
   <script src='js/angular-moment/angular-moment.js'></script>

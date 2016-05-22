@@ -31,14 +31,11 @@
         <button class='btn btn-danger cursive_button' ng-click='removePic(user_info_photo)'>Delete</button>
       </div>
     </div>
+    <!-- The following format can be used to expand profiles with more than just an about me section -->
   <h2 class='cursive'>All About Me</h2>
   <textarea class='about_me form-control' ng-model='profile.about_me' rows="8" cols="40"></textarea>
   <button class='btn btn-info pull-right pic_button' ng-click='updateAboutMe()'>Update About Me</button>
   <div class='profile_preview'>
     <p class='cursive'>{{user_info[0].about_me}}</p>
   </div>
-  <!-- <h2 class='cursive'>Indoor or outdoor?</h2>
-  <textarea class='about_me form-control' ng-model='profile.indoor_outdoor' rows="3" cols="35"></textarea>
-  <button class='btn btn-info pull-right pic_button' ng-click='updateIndoorOutdoor()' >Update Indoor Outdoor</button> -->
-
 </div>

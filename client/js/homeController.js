@@ -19,9 +19,7 @@ angular.module('myApp').controller('homeController',
     pagesShown = pagesShown +1;
     };
 
-    
-
-    UserFactory.get_users(function(data){
+    UserFactory.getUsers(function(data){
       // console.log("traverse this:",data)
       for(k in data){
         if (data[k]._id == $rootScope.user_id){
@@ -54,13 +52,6 @@ angular.module('myApp').controller('homeController',
       return array;
     }
 
-
-
-    // angular.forEach($scope.user_info.other_pics, function(pic){
-    //   console.log("stuff and ",pic)
-    //   $scope.user_info_photos.push(pic)
-    // })
-
     $scope.uploadPic = function() {
       user = {
         user_id: $rootScope.user_id,
@@ -81,18 +72,17 @@ angular.module('myApp').controller('homeController',
       // console.log('addPic function has user as:', user)
       UserFactory.addPic(user, function(data){
         // console.log("that dater do:", data)
-        $scope.user_info_photos.push(user.pic)
+        $scope.user_info_photos.push(user.pic);
         $scope.pictures = {};
-      })
+      });
     }
 
     $scope.removePic = function(photo) {
       console.log("step 1", photo)
       UserFactory.removePic({photo}, function(){
-        console.log("step 3", photo)
-        $scope.user_info_photos.splice($scope.user_info_photos.indexOf(photo), 1)
-        // console.log('success')
-      })
+        console.log("step 3", photo);
+        $scope.user_info_photos.splice($scope.user_info_photos.indexOf(photo), 1);
+      });
     }
 
     $scope.updateAboutMe = function() {
@@ -103,29 +93,32 @@ angular.module('myApp').controller('homeController',
         $scope.user_info[0].about_me = $scope.profile.about_me;
         // console.log('if I"m getting here then what is up', $scope.user_info.about_me, $scope.profile.about_me)
         $scope.profile = {}
-      })
+      });
     }
 
     $scope.viewProfile = function(user) {
-      console.log($rootScope.loggedIn, user._id);
+      // Quick check to see if user is logged in before we go to the profile.
+      // console.log($rootScope.loggedIn, user._id);
       if($rootScope.loggedIn == true){
         $location.path('/one/'+user._id)
       } else {
         alert('Please login or register to view profiles');
       }
     }
+}]);
+
+// some or none of this may come in handy later.
+// UserFactory.getUserById(function(data){
+//   $scope.user_info = data;
+// });
 
 
 
-    // UserFactory.get_user_by_id(function(data){
-    //   $scope.user_info = data;
-    // });
+// UserFactory.index(function(data){
+//   $scope.users = data;
+// });
 
-
-
-    // UserFactory.index(function(data){
-    //   $scope.users = data;
-    // });
-
-
-}])
+// angular.forEach($scope.user_info.other_pics, function(pic){
+//   console.log("stuff and ",pic)
+//   $scope.user_info_photos.push(pic)
+// });

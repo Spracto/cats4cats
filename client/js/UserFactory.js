@@ -1,22 +1,16 @@
-angular.module('myApp').factory('UserFactory',
+angular.module('myApp')
+.factory('UserFactory',
   function ($http, $rootScope){
   var factory = {};
   var users = [];
   var user = [];
 
 
-  factory.get_users = function(callback){
-    $http.get('/user/get_users').success(function(output){
-      // console.log('this is a wild thing to try.', req.session.user_id)
+  factory.getUsers = function(callback){
+    $http.get('/user/getUsers').success(function(output){
       users = output;
       callback(users);
     });
-    // console.log('factory index function has started');
-    // $http.get('/users').success(function(output){
-    //   console.log("in the user factory I have output as:",output)
-    //   users = output;
-    //   callback(users);
-    // });
   }
 
   factory.deleteMessage = function(_id, callback){
@@ -25,9 +19,9 @@ angular.module('myApp').factory('UserFactory',
     })
   }
 
-  factory.get_user_by_id = function(data, callback){
+  factory.getUserById = function(data, callback){
     console.log("made it to the userfactory.js data is:", data )
-    $http.get('/user/get_user_by_id/'+ data ).success(function(output){
+    $http.get('/user/getUserById/'+ data ).success(function(output){
       console.log("userfactory.js here, the controller sent this back", output)
       user = output;
       callback(user)
@@ -65,7 +59,7 @@ angular.module('myApp').factory('UserFactory',
   }
 
   factory.sendMessage = function(data, callback){
-    console.log('Get wrecked project', data)
+    console.log('the data for the project', data)
     $http.post('/user/sendMessage', data).success(function(response){
       console.log('sendMessage', response)
       callback(response)

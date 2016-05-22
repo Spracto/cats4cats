@@ -10,7 +10,7 @@
       <div ng-show='message.inbox.reply'>
         <form class='form-group reply_message_form'>
           <input class='form-control' type='text' name='replyinfo[reply.content]' ng-model='replyinfo.message'/>
-          <button class='btn btn-success pull-right message_send_message_button' type='submit' ng-click='sendMessage(replyinfo, message.inbox.from_id)'>Send message</button>
+          <button class='btn btn-success pull-right message_send_message_button' type='submit' ng-click='sendMessage(replyinfo, message.inbox.from_id, message.inbox)'>Send message</button>
         </form>
       </div>
       <hr />
